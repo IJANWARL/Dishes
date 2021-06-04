@@ -1,0 +1,21 @@
+{
+  "common": {
+    "edit": "Edit",
+    "save": "Save"
+  },
+  "header": "Dishes application",
+  "addImage": "Ad image",
+  "titles": {
+    "list": "Dishes - list",
+    "details": "Dishes - details",
+    "edit": "Dishes - edit"
+  },
+  "labels": {
+    "name": "Name",
+    "preparationTime": "Preparation time"
+  },
+  "headers": {
+    "basicData": "Basic data",
+    "type": "Type"
+  }
+}

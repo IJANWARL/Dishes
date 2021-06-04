@@ -1,0 +1,57 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "es6",
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react",
+    "outDir": "./dist/",
+    "baseUrl": "./",
+    "paths": {
+      "components/*": [
+        "app/components/*"
+      ],
+      "containers/*": [
+        "app/containers/*"
+      ],
+      "pageUrls": [
+        "app/pageUrls.ts"
+      ],
+      "consts": [
+        "app/consts.ts"
+      ],
+      "services/*": [
+        "app/services/*"
+      ],
+      "utils/*": [
+        "app/utils/*"
+      ],
+      "redux/*": [
+        "app/redux/*"
+      ],
+      "styles/*": [
+        "app/styles/*"
+      ]
+    }
+  },
+  "include": [
+    "app"
+  ]
+}
