@@ -1,5 +1,6 @@
 export default {
   ROOT: '/dishes',
-  PRODUCT_DETAILS: '/dishes/:productId/details',
-  PRODUCT_EDIT: '/dishes/:productId/edit'
+  DISH_DETAILS: '/dishes/:dishId/details',
+  DISH_EDIT: '/dishes/:dishId/edit',
+  DISH_NEW: '/dishes/new'
 };

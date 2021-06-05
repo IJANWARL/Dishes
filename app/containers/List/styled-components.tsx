@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -11,6 +12,10 @@ export const Container = styled.div`
 
   border: 1px solid ${colors.geyser};
   border-radius: 5px;
+
+  a:hover {
+    text-decoration: none;
+  }
 `;
 
 export const Row = styled(({ header, last, ...props }) => <div {...props} />)`
@@ -37,4 +42,10 @@ export const Column = styled.div`
   color: ${colors.black};
   white-space: nowrap;
   text-overflow: ellipsis;
+`;
+
+export const AddNewButtonWrapper = styled(Link)`
+  position: absolute;
+  top: -44px;
+  right: 20px;
 `;

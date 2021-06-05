@@ -1,7 +1,7 @@
-import { IListElementState } from 'containers/List/duck/models';
+import { IDishState } from 'containers/List/duck/models';
 
 interface IState {
-  list: IListElementState[];
+  list: IDishState[];
   form?: any;
 }
 

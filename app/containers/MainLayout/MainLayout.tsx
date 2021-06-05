@@ -32,10 +32,13 @@ const MainLayout = () => {
           <Route exact path={pageUrls.ROOT}>
             <ProductsList />
           </Route>
-          <Route exact path={pageUrls.PRODUCT_DETAILS}>
+          <Route exact path={pageUrls.DISH_DETAILS}>
             <Details />
           </Route>
-          <Route exact path={pageUrls.PRODUCT_EDIT}>
+          <Route exact path={pageUrls.DISH_NEW}>
+            <ProductEditForm />
+          </Route>
+          <Route exact path={pageUrls.DISH_EDIT}>
             <ProductEditForm />
           </Route>
           <Route>

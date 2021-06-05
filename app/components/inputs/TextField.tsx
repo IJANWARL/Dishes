@@ -1,16 +1,16 @@
 import React from 'react';
 
 import { TextField, TextFieldProps } from '@material-ui/core';
-import { Field, WrappedFieldProps } from 'redux-form';
+import { Field, BaseFieldProps, WrappedFieldProps } from 'redux-form';
 
-type ITextFieldProps = TextFieldProps & WrappedFieldProps;
+type ITextFieldProps = TextFieldProps;
 
 const TextFieldComponent = ({
   label,
   input,
   meta: { touched, invalid, error },
   ...props
-}: ITextFieldProps) => (
+}: ITextFieldProps & WrappedFieldProps) => (
   <TextField
     label={label}
     placeholder={label?.toString()}
@@ -23,10 +23,14 @@ const TextFieldComponent = ({
 
 const TextFieldForm = ({
   name,
+  parse,
+  format,
   ...props
-}: { name: string } & TextFieldProps) => (
+}: BaseFieldProps & ITextFieldProps) => (
   <Field
     name={name}
+    parse={parse}
+    format={format}
     component={TextFieldComponent}
     props={{ ...props, name }}
   />

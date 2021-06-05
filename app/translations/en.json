@@ -1,7 +1,8 @@
 {
   "common": {
     "edit": "Edit",
-    "save": "Save"
+    "save": "Save",
+    "add": "Add"
   },
   "header": "Dishes application",
   "addImage": "Ad image",
@@ -12,10 +13,16 @@
   },
   "labels": {
     "name": "Name",
-    "preparationTime": "Preparation time"
+    "type": "Type",
+    "diameter": "Diameter",
+    "noOfSlices": "Number of slices",
+    "preparationTime": "Preparation time",
+    "spicinessSale": "Spiciness scale",
+    "slicesOfBread": "Slices of bread"
   },
   "headers": {
     "basicData": "Basic data",
+    "additionalData": "Additional data",
     "type": "Type"
   }
 }

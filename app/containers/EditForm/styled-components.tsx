@@ -1,6 +1,7 @@
 import { withStyles } from '@material-ui/core';
 import styled from 'styled-components';
 
+import SelectForm from 'components/inputs/Select';
 import TextField from 'components/inputs/TextField';
 
 export const Header = styled.h2`
@@ -47,4 +48,9 @@ export const SaveButtonWrapper = styled.div`
   position: absolute;
   top: 20px;
   right: 20px;
+`;
+
+export const SelectInput = styled(SelectForm)`
+  width: calc(33% - 50px);
+  margin-right: 50px;
 `;

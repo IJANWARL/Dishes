@@ -1,3 +1,3 @@
 import IState from 'redux/models';
 
-export const getProductsList = (state: IState) => state.list;
+export const getDishesList = (state: IState) => state.list;
