@@ -1,4 +1,5 @@
 import 'utils/commonExtensions';
+import 'utils/axiosInterceptors';
 
 import React, { Suspense } from 'react';
 import { render } from 'react-dom';
@@ -7,6 +8,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 
+import { SnackbarProvider } from 'notistack';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 
 import store from 'redux/store';
@@ -26,10 +28,18 @@ render(
       <HelmetProvider>
         <Provider store={store}>
           <MuiThemeProvider theme={mainMuiTheme}>
-            <Router history={history}>
-              <GlobalStyles />
-              <MainLayout />
-            </Router>
+            <SnackbarProvider
+              maxSnack={5}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'center'
+              }}
+            >
+              <Router history={history}>
+                <GlobalStyles />
+                <MainLayout />
+              </Router>
+            </SnackbarProvider>
           </MuiThemeProvider>
         </Provider>
       </HelmetProvider>

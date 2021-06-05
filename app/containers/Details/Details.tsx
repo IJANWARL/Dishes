@@ -29,7 +29,7 @@ const Details = () => {
       diameter,
       noOfSlices,
       slicesOfBread,
-      spicinessSale,
+      spicinessScale,
       preparationTime
     },
     setDetails
@@ -86,8 +86,8 @@ const Details = () => {
       {type === 'soup' && (
         <Row>
           <Column>
-            <span>{t('labels.spicinessSale')}</span>
-            <p>{spicinessSale}</p>
+            <span>{t('labels.spicinessScale')}</span>
+            <p>{spicinessScale}</p>
           </Column>
         </Row>
       )}

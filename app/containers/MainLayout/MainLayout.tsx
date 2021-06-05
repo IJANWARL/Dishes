@@ -5,9 +5,9 @@ import { useTranslation } from 'react-i18next';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 import pageUrls from 'pageUrls';
-import ProductsList from 'containers/List/List';
+import List from 'containers/List/List';
 import Details from 'containers/Details/Details';
-import ProductEditForm from 'containers/EditForm/EditForm';
+import EditForm from 'containers/EditForm/EditForm';
 import { redirectBack } from 'utils/history';
 
 import { Header, ContentContainer } from './styled-components';
@@ -30,16 +30,16 @@ const MainLayout = () => {
       <ContentContainer>
         <Switch>
           <Route exact path={pageUrls.ROOT}>
-            <ProductsList />
+            <List />
           </Route>
           <Route exact path={pageUrls.DISH_DETAILS}>
             <Details />
           </Route>
           <Route exact path={pageUrls.DISH_NEW}>
-            <ProductEditForm />
+            <EditForm />
           </Route>
           <Route exact path={pageUrls.DISH_EDIT}>
-            <ProductEditForm />
+            <EditForm />
           </Route>
           <Route>
             <Redirect to={{ pathname: pageUrls.ROOT }} />

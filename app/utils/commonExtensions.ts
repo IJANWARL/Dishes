@@ -3,6 +3,8 @@ declare global { // eslint-disable-line
     format(obj: object): string;
     removeNoDuration(): string;
     toDuration(): IDuration;
+    toSnakeCase(): string;
+    toCamelCase(): string;
   }
 
   interface Number {
@@ -45,6 +47,14 @@ String.prototype.toDuration = function () {
 
 Number.prototype.leadingZero = function (): string {
   return this < 10 ? `0${this}` : this.toString();
+};
+
+String.prototype.toSnakeCase = function (): string {
+  return this.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`);
+};
+
+String.prototype.toCamelCase = function (): string {
+  return this.replace(/([_][a-z])/g, s => s.replace('_', '').toUpperCase());
 };
 
 export {};

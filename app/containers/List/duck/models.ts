@@ -7,7 +7,7 @@ export interface IDishState {
   type: DISHES;
   noOfSlices?: number;
   diameter?: number;
-  spicinessSale?: number;
+  spicinessScale?: number;
   slicesOfBread?: number;
 }
 
@@ -15,5 +15,5 @@ export const initialDishState: IDishState = {
   name: '',
   preparationTime: { hours: 0, minutes: 0, seconds: 0 },
   type: 'pizza',
-  spicinessSale: 1
+  spicinessScale: 1
 };

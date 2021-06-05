@@ -11,6 +11,18 @@ export const addToList = (data: IDishState): IAdddTListAction => ({
   data
 });
 
-type Actions = IAdddTListAction;
+interface IEditDish {
+  type: types.EDIT_DISH;
+  data: IDishState;
+  idx: number;
+}
+
+export const editDish = (idx: number, data: IDishState): IEditDish => ({
+  type: types.EDIT_DISH,
+  data,
+  idx
+});
+
+type Actions = IAdddTListAction | IEditDish;
 
 export default Actions;

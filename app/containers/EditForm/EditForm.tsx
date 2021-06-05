@@ -6,17 +6,19 @@ import { useParams } from 'react-router-dom';
 import { reduxForm } from 'redux-form';
 import { Button } from '@material-ui/core';
 import SaveIcon from '@material-ui/icons/Save';
+import { useSnackbar } from 'notistack';
 
 import RadioGroup from 'components/inputs/RadioGroup';
 import { IDishState, initialDishState } from 'containers/List/duck/models';
 import { DISHES_OPTIONS } from 'consts';
 import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import { getDishesList } from 'containers/List/duck/selectors';
-import { addToList } from 'containers/List/duck/actions';
+import { addToList, editDish } from 'containers/List/duck/actions';
 import { redirect } from 'utils/history';
 import pageUrls from 'pageUrls';
 import { durationToString } from 'utils/formatters';
 import IState from 'redux/models';
+import RestClient from 'services/RestClient/RestClient';
 
 import {
   SaveButtonWrapper,
@@ -84,15 +86,15 @@ const DishForm = reduxForm<IDishState>({
               type="number"
               name="diameter"
               label={t('labels.diameter')}
-              parse={v => v && biggerTanZero(v)}
+              parse={v => v && parseFloat(biggerTanZero(v))}
             />
           </>
         )}
         {type === 'soup' && (
           <SelectInput
             type="number"
-            name="spicinessSale"
-            label={t('labels.spicinessSale')}
+            name="spicinessScale"
+            label={t('labels.spicinessScale')}
             parse={v => v && parseInt(biggerTanZero(v))}
             selectValues={SPICINESS_SCALE_OPTIONS}
           />
@@ -113,17 +115,43 @@ const DishForm = reduxForm<IDishState>({
 
 const ContactPage = () => {
   const dispatch = useAppDispatch();
-  const submit = (values: IDishState) => {
-    dispatch(addToList(values));
-    redirect(pageUrls.ROOT);
-  };
-
   const list = useAppSelector(getDishesList);
 
   const { dishId } = useParams<IEditUrlParams>();
 
+  const newDish = !dishId || parseInt(dishId) >= list.length;
+  const { enqueueSnackbar } = useSnackbar();
+
+  const handleSaveDish = (data: IDishState) =>
+    RestClient.saveDish({
+      ...data,
+      preparationTime: durationToString(data.preparationTime)
+    }).then(
+      response => {
+        dispatch(
+          addToList({
+            ...response.data,
+            preparationTime: response.data.preparationTime.toDuration()
+          })
+        );
+        redirect(pageUrls.ROOT);
+      },
+      e =>
+        enqueueSnackbar(Object.values(e.response.data).join(' '), {
+          variant: 'error'
+        })
+    );
+
+  const handleEditDish = (data: IDishState) => {
+    dispatch(editDish(parseInt(dishId), data));
+    redirect(pageUrls.ROOT);
+  };
+
+  const submit = (data: IDishState) =>
+    newDish ? handleSaveDish(data) : handleEditDish(data);
+
   const initialValues = useMemo(() => {
-    if (!dishId || parseInt(dishId) >= list.length) return initialDishState;
+    if (newDish) return initialDishState;
 
     return list[parseInt(dishId)];
   }, [dishId]);

@@ -17,7 +17,7 @@
     "diameter": "Diameter",
     "noOfSlices": "Number of slices",
     "preparationTime": "Preparation time",
-    "spicinessSale": "Spiciness scale",
+    "spicinessScale": "Spiciness scale",
     "slicesOfBread": "Slices of bread"
   },
   "headers": {
